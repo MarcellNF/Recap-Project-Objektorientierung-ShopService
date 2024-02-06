@@ -66,6 +66,11 @@ public class ShopService {
         orderRepo.removeOrder(id);
     }
 
+    public List<Product> addProductsFromCsv(String filePath) {
+        List<Product> products = CsvService.readProductsFromCsv(filePath);
+        return productRepo.addProducts(products);
+    }
+
     private BigDecimal calculateTotalPrice(List<String> productIds) {
         BigDecimal totalPrice = BigDecimal.ZERO;
         List<Product> products = retrieveProducts(productIds);
