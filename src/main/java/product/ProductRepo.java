@@ -30,11 +30,10 @@ public class ProductRepo {
         return newProduct;
     }
 
-    public List<Product> addProducts(List<Product> newProducts) {
+    public void addProducts(List<Product> newProducts) {
         for (Product product : newProducts) {
             products.put(product.id(), product);
         }
-        return new ArrayList<>(products.values());
     }
 
     public void removeProduct(String id) {

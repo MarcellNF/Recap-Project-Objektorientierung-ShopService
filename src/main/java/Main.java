@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class Main {
     private static final ShopService shopService = new ShopService();
-    private static final Scanner scanner = new Scanner(System.in);;
+    private static final Scanner scanner = new Scanner(System.in);
     private static final IdService idService = new IdService();
 
     public static void start() {
@@ -87,6 +87,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-       start();;
+        shopService.addProductsFromCsv("src/main/resources/products.csv");
+        start();
     }
 }
