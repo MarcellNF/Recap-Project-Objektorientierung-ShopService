@@ -1,9 +1,9 @@
+import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 class ProductRepoTest {
 
@@ -17,7 +17,7 @@ class ProductRepoTest {
 
         //THEN
         List<Product> expected = new ArrayList<>();
-        expected.add(new Product("1", "Apfel"));
+        expected.add(new Product("1", "Apfel", new BigDecimal("0.25")));
         assertEquals(actual, expected);
     }
 
@@ -30,7 +30,7 @@ class ProductRepoTest {
         Product actual = repo.getProductById("1");
 
         //THEN
-        Product expected = new Product("1", "Apfel");
+        Product expected = new Product("1", "Apfel", new BigDecimal("0.25"));
         assertEquals(actual, expected);
     }
 
@@ -38,13 +38,13 @@ class ProductRepoTest {
     void addProduct() {
         //GIVEN
         ProductRepo repo = new ProductRepo();
-        Product newProduct = new Product("2", "Banane");
+        Product newProduct = new Product("2", "Banane", new BigDecimal("0.35"));
 
         //WHEN
         Product actual = repo.addProduct(newProduct);
 
         //THEN
-        Product expected = new Product("2", "Banane");
+        Product expected = new Product("2", "Banane", new BigDecimal("0.35"));
         assertEquals(actual, expected);
         assertEquals(repo.getProductById("2"), expected);
     }

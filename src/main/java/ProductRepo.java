@@ -1,12 +1,13 @@
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ProductRepo {
-    private List<Product> products;
+    private final List<Product> products;
 
     public ProductRepo() {
         products = new ArrayList<>();
-        products.add(new Product("1", "Apfel"));
+        products.add(new Product("1", "Apfel", new BigDecimal("0.25")));
     }
 
     public List<Product> getProducts() {

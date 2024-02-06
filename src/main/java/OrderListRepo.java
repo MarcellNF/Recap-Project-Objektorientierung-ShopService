@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OrderListRepo implements OrderRepo{
-    private List<Order> orders = new ArrayList<>();
+    private final List<Order> orders = new ArrayList<>();
 
     public List<Order> getOrders() {
         return orders;
