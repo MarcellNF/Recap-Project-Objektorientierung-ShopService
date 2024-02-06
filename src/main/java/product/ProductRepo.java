@@ -1,21 +1,23 @@
-import java.math.BigDecimal;
+package product;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ProductRepo {
-    private final List<Product> products;
+    private final Map<String, Product> products;
 
     public ProductRepo() {
-        products = new ArrayList<>();
-        products.add(new Product("1", "Apfel", new BigDecimal("0.25")));
+        products = new HashMap<>();
     }
 
     public List<Product> getProducts() {
-        return products;
+        return new ArrayList<>(products.values());
     }
 
     public Product getProductById(String id) {
-        for (Product product : products) {
+        for (Product product : products.values()) {
             if (product.id().equals(id)) {
                 return product;
             }
@@ -24,16 +26,11 @@ public class ProductRepo {
     }
 
     public Product addProduct(Product newProduct) {
-        products.add(newProduct);
+        products.put(newProduct.id(), newProduct);
         return newProduct;
     }
 
     public void removeProduct(String id) {
-        for (Product product : products) {
-           if (product.id().equals(id)) {
-               products.remove(product);
-               return;
-           }
-        }
+        products.remove(id);
     }
 }
